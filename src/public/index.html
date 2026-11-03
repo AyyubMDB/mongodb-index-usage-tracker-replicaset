@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Index Usage Dashboard</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Index Usage Dashboard</h1>
+      <p class="subtitle" id="subtitle">Loading&hellip;</p>
+    </div>
+    <div class="topbar-actions">
+      <button id="refreshBtn" class="btn">Refresh</button>
+      <button id="exportBtn" class="btn btn-secondary">Export CSV</button>
+    </div>
+  </header>
+
+  <section class="cards" id="cards">
+    <!-- populated by app.js -->
+  </section>
+
+  <section class="controls">
+    <input id="searchInput" type="text" placeholder="Search by db, collection, or index name&hellip;" />
+    <select id="categoryFilter">
+      <option value="all">All recommendations</option>
+      <option value="candidate">Candidate for removal</option>
+      <option value="review">Review manually</option>
+      <option value="do_not_drop">Do not drop (TTL)</option>
+      <option value="too_early">Too early</option>
+      <option value="keep">Keep (in use)</option>
+    </select>
+    <select id="dbFilter">
+      <option value="all">All databases</option>
+    </select>
+    <label class="checkbox-label">
+      <input type="checkbox" id="hideKeep" />
+      Hide "Keep (in use)" rows
+    </label>
+  </section>
+
+  <section class="table-wrapper">
+    <table id="reportTable">
+      <thead>
+        <tr>
+          <th data-key="db">Database</th>
+          <th data-key="collection">Collection</th>
+          <th data-key="index">Index</th>
+          <th data-key="keyPatternStr">Key Pattern</th>
+          <th data-key="totalOps" class="num">Total Ops</th>
+          <th data-key="pollCount" class="num">Polls</th>
+          <th data-key="resetsSeen" class="num">Resets</th>
+          <th data-key="daysTracked" class="num">Days Tracked</th>
+          <th data-key="flagsStr">Flags</th>
+          <th data-key="recommendation">Recommendation</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- populated by app.js -->
+      </tbody>
+    </table>
+    <p id="emptyState" class="empty-state" hidden>No indexes match the current filters.</p>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>

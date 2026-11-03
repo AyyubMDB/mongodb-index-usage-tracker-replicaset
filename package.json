@@ -1,0 +1,17 @@
+{
+  "name": "mongodb-index-usage-tracker-replicaset",
+  "version": "1.0.0",
+  "description": "Polls MongoDB Atlas $indexStats over time (surviving elections/restarts) to identify genuinely unused indexes before dropping them.",
+  "main": "src/collector.js",
+  "type": "commonjs",
+  "scripts": {
+    "collect": "node src/collector.js",
+    "report": "node src/report.js",
+    "ui": "node src/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.22.2",
+    "mongodb": "^6.9.0"
+  }
+}
